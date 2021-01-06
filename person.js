@@ -7,7 +7,7 @@
 
 function Person() {
   this.pos = createVector(50, height-10);
-  this.vel = createVector(0.25, 0);
+  this.vel = createVector(1, 0);
   this.acc = createVector(0, 0);
   this.score = 0;
 
@@ -30,7 +30,8 @@ function Person() {
     
     stroke(20, 20, 20);
     textSize(100);
-    text(this.score, this.pos.x, 100);
+    textAlign(CENTER);
+    text(this.score, this.pos.x, 90);
   }
   
   this.hits = function(obs) {
@@ -46,6 +47,9 @@ function Person() {
     if (this.pos.y > height - 11) {
       this.vel.y *= 0;
       this.pos.y = height - 11;
+    } else if (this.pos.y < 0) {
+      this.vel.y *=0;
+      this.pos.y = 0;
     }
 
     // if (this.pos.x > width) {
