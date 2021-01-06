@@ -3,6 +3,7 @@ html, body {
   padding: 0;
 }
 canvas {
+  border: 7px double rgb(105, 148, 126);
   display: block;
 }
 h1 {
