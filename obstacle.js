@@ -1,7 +1,7 @@
 class Obstacle {
   constructor(){
     // the final number was 50 before, why?
-    this.pos = createVector(random(width), random(height - 10));
+    this.pos = createVector(random(man.pos.x + 40, man.pos.x + 1200), random(height - 10));
     this.vel = createVector(-0.25, 0);
     this.acc = createVector(0, 0);
   }
