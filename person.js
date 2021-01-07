@@ -43,6 +43,7 @@ function Person() {
   }
   
   // I changed some of these numbers so that my person is displayed on the ground properly
+  // I added a second edge on the top of the screen
   this.edges = function() {
     if (this.pos.y > height - 11) {
       this.vel.y *= 0;
