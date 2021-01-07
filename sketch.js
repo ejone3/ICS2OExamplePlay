@@ -1,6 +1,8 @@
 var man;
 var bad = [];
 var currentScene = 1;
+var endSceneCountdown = 0;
+var endScene = false;
 
 function setup() {
   createCanvas(640, 360);
@@ -13,6 +15,7 @@ function setup() {
 // scene 1, the start scene
 var drawScene1 = function() {
   currentScene = 1;
+  man.score = 0;
   background(164, 250, 117);
   textSize(50);
   textAlign(CENTER);
@@ -33,6 +36,7 @@ var drawScene2 = function() {
   
   // changed this number, not sure what it does, will check it out later
   translate(-man.pos.x + 50, 0);
+  endSceneCountdown += 1.2;
   
   let gravity = createVector(0, 0.17);
   man.applyForce(gravity);
@@ -49,11 +53,22 @@ var drawScene2 = function() {
     bad[i].show();
     bad[i].update();
   }
+  
+  if (endSceneCountdown > 1210 && !endScene) {
+    drawScene3();
+    endScene = true;
+  }
 }
 
 var drawScene3 = function() {
   currentScene = 3;
   resetMatrix();
+  
+  bad = [];
+  for (let i = 0; i < 100; i++) {
+    bad[i] = new Obstacle();
+  }
+  
   background(219, 160, 208);
   textSize(20);
   textAlign(CENTER);
@@ -72,6 +87,9 @@ function keyPressed() {
 }
 
 function draw() {
+  if (currentScene === 1) {
+    drawScene1();
+  }
   if (currentScene === 2) {
     drawScene2();
   }
@@ -80,12 +98,9 @@ function draw() {
 function mousePressed() {
   if (currentScene === 1) {
     drawScene2();
-  } else if (currentScene === 2) {
-    drawScene3();
   } else if (currentScene === 3) {
     drawScene1();
   }
 }
 
-//drawScene1();
-drawScene3();
+drawScene1();
