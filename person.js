@@ -36,10 +36,9 @@ function Person() {
   
   this.hits = function(obs) {
      if((obs.pos.x >= this.pos.x && obs.pos.x <= (this.pos.x + 10)) && (obs.pos.y >= this.pos.y && obs.pos.y <= (this.pos.y + 10))) {
-      this.score++;
+      this.score += obs.value;
       obs.pos.y = -400;
     }
-    //collideRectRect(this.pos.x, this.pos.y, 10, 10, obs.pos.x, obs.pos.y, 10, 10);
   }
   
   // I changed some of these numbers so that my person is displayed on the ground properly
@@ -52,10 +51,14 @@ function Person() {
       this.vel.y *=0;
       this.pos.y = 0;
     }
+  }
 
-    // if (this.pos.x > width) {
-    //   this.vel.x *= -1;
-    //   this.pos.x = width;
-    // }
+  // this resets the person at the bottom of the screen
+  this.reset = function() {
+    this.pos.y = 349;
+    // this kills the velocity so the person doesn't immediately shoot up when the game restarts
+    this.vel = createVector(0,0);
+    // this resets the velocity so that the game will still work the same as before when it restarts
+    this.vel = createVector(1,0);
   }
 }
