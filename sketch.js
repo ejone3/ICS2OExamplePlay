@@ -1,14 +1,17 @@
 var man;
 var bad = [];
+var bonus = [];
 var currentScene = 1;
 var endSceneCountdown = 0;
-var endScene = false;
 
 function setup() {
   createCanvas(640, 360);
   man = new Person();
   for (let i = 0; i < 100; i++) {
     bad[i] = new Obstacle();
+  }
+  for (let j = 0; j < 25; j++) {
+    bonus[j] = new Special();
   }
 }
 
@@ -47,26 +50,40 @@ var drawScene2 = function() {
   
   for (let i = 0; i < 100; i++) {
     if(man.hits(bad[i])) {
-      console.log("Game Over!!");
       console.log(bad[i].pos.x);
     }
     bad[i].show();
     bad[i].update();
   }
   
-  if (endSceneCountdown > 1210 && !endScene) {
+  for (let j = 0; j < 25; j++) {
+    if (man.hits(bonus[j])) {
+      console.log(bonus[j].pos.x);
+    }
+    bonus[j].show();
+    bonus[j].update();
+  }
+  
+  if (endSceneCountdown > 1210) {
     drawScene3();
-    endScene = true;
   }
 }
 
 var drawScene3 = function() {
   currentScene = 3;
+  endSceneCountdown = 0;
+  man.reset(); 
+  
   resetMatrix();
   
   bad = [];
   for (let i = 0; i < 100; i++) {
     bad[i] = new Obstacle();
+  }
+  
+  bonus = [];
+  for (let j = 0; j < 25; j++) {
+    bonus[j] = new Special();
   }
   
   background(219, 160, 208);
@@ -102,5 +119,3 @@ function mousePressed() {
     drawScene1();
   }
 }
-
-drawScene1();
