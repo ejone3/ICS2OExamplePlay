@@ -19,6 +19,7 @@ function setup() {
 var drawScene1 = function() {
   currentScene = 1;
   man.score = 0;
+  
   background(164, 250, 117);
   textSize(50);
   textAlign(CENTER);
@@ -26,6 +27,7 @@ var drawScene1 = function() {
   text("Blocky Jump!!", width/2, 50);
   textSize(30);
   text("Click to start", width/2, 100);
+  
   noStroke();
   fill(255);
   rect(width/4, height/2, 50, 50);
