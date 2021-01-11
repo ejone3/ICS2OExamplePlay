@@ -53,12 +53,10 @@ function Person() {
     }
   }
 
-  // this resets the person at the bottom of the screen
+  // this resets the person at the bottom of the screen and kills any upwards velocity from any jumps just before the end scene showed up
   this.reset = function() {
     this.pos.y = 349;
-    // this kills the velocity so the person doesn't immediately shoot up when the game restarts
-    this.vel = createVector(0,0);
-    // this resets the velocity so that the game will still work the same as before when it restarts
-    this.vel = createVector(1,0);
+    let superGravity = createVector (0, 50);
+    this.applyForce(superGravity);
   }
 }
