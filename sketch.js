@@ -1,3 +1,5 @@
+// I used an rgb color picker in this. Just the one that shows up when you search "rgb color picker" in google.
+
 var man;
 var bad = [];
 var bonus = [];
