@@ -3,9 +3,11 @@ html, body {
   padding: 0;
 }
 canvas {
+  margin: 100px;
+  padding: 10px;
   border: 7px double rgb(105, 148, 126);
   display: block;
 }
 h1 {
-  color: rgb(255, 255, 255);
+  color: rgb(101, 201, 196);
 }
