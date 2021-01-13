@@ -9,9 +9,8 @@ class Obstacle {
 
   show() {
     noStroke();
-    if (this.colour === color("yellow")) {
+    if (this.colour === color("yellow") || this.colour === color(255, 255, 0)) {
       fill(109, 189, 149);
-      console.log("yes");
     } else {
       fill(this.colour);
     }
