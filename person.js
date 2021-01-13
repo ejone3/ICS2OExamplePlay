@@ -31,7 +31,7 @@ function Person() {
     stroke(20, 20, 20);
     textSize(100);
     textAlign(CENTER);
-    text(this.score, this.pos.x, 90);
+    text(this.score, this.pos.x + 20, 90);
   }
   
   this.hits = function(obs) {
